@@ -11,7 +11,7 @@ exports.getProducts = async (req, res) => {
 
 exports.getProduct = async (req, res) => {
     const query = req.query.q;
-    if (query.length >= 2) {
+    if (query.length > 2) {
       try {
         const results = await Product.find({
           name: new RegExp(query, 'i')
@@ -73,6 +73,14 @@ exports.deleteProduct = async (req, res) => {
         return res.status(500).json({ message: err.message });
     }
 };
+exports.deleteAllProducts = async (req, res) => {
+    try {
+      await Product.deleteMany({});
+      res.status(200).json({ message: 'All products deleted successfully' });
+    } catch (error) {
+      res.status(500).json({ message: 'Error deleting products', error });
+    }
+  };
 
 exports.bulkInsertProducts = async (req, res) => {
     try {
