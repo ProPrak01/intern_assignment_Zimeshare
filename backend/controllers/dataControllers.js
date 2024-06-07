@@ -11,7 +11,7 @@ exports.getProducts = async (req, res) => {
 
 exports.getProduct = async (req, res) => {
     const query = req.query.q;
-    if (query.length >= 3) {
+    if (query.length >= 2) {
       try {
         const results = await Product.find({
           name: new RegExp(query, 'i')
