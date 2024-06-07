@@ -39,10 +39,10 @@
       async handleInput() {
         if (this.query.length > 3) {
           try {
-            const response = await axios.get(`http://localhost:8080/api/products/search?q=${this.query}`);
+            const response = await axios.get(`https://intern-assignment-zimeshare-backend.vercel.app/api/products/search?q=${this.query}`);
             this.results = response.data;
           } catch (error) {
-            console.error("There was an error fetching the search results:", error);
+            console.error("There was an error fetching the search  results:", error);
           }
         } else {
           this.results = [];
@@ -52,7 +52,7 @@
         this.showAll = !this.showAll;
         if (this.showAll) {
           try {
-            const response = await axios.get('http://localhost:8080/api/products');
+            const response = await axios.get('https://intern-assignment-zimeshare-backend.vercel.app/api/products');
             this.results = response.data;
           } catch (error) {
             console.error("There was an error fetching all products:", error);
